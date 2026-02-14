@@ -2,6 +2,8 @@ import React from "react";
 
 const QuestionCard = ({ data, handleAnswer, selectedAnswer }) => {
   if (!data) return null;
+  console.log(data.question)
+  console.log(data)
 
   return (
     <div className="animate-fadeIn">
@@ -19,10 +21,11 @@ const QuestionCard = ({ data, handleAnswer, selectedAnswer }) => {
           }
 
           return (
-            <button key={i} disabled={!!selectedAnswer} onClick={() => handleAnswer(opt)}
+            <button key={i} disabled={selectedAnswer} onClick={() => handleAnswer(opt)}
               className={`w-full text-left p-5 rounded-2xl border-2 transition-all flex items-center group ${btnClass}`}>
               <span className={`w-10 h-10 rounded-xl text-center leading-10 mr-5 font-white transition-all ${selectedAnswer && isCorrect ? "bg-green-500 text-white" : "bg-white/10"}`}>
-                {String.fromCharCode(65 + i)}
+                {String.fromCharCode(65 + i)} {/*65 is the Unicode code point for the uppercase letter 'A'.
+                                              i is a variable (often an index starting at 0 in a loop).*/}
               </span>
               <span className="font-semibold text-white text-lg">{opt}</span>
             </button>
